@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<style>
+
+    body {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url("moon.jpg");
+        background-repeat: no-repeat;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+    }
+
+    div:first-of-type {
+        line-height: .1em;
+        margin-top: 40vh;
+    }
+    p {
+        font-size: 3em;
+        font-weight: 700;
+    }
+
+    span {
+        font-size: 2em;
+        font-weight: 700;
+    }
+
+    #counter {
+        font-size: 1.9em;
+        font-weight: 700;
+    }
+
+</style>
+<html>
+  <body>
+    <div id="days"></div>
+    <div id="counter"></div>
+
+
+    <script>
+countIt();
+
+function countIt(){
+
+    setTimeout(function(){
+    startDate = new Date("Jan 01 2021 00:00:00");
+    endDate = new Date("Jan 01 2022 00:00:00");
+    thisDate  = new Date();
+    thisDate  = new Date(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate(), thisDate.getHours(), thisDate.getMinutes(), thisDate.getSeconds(), 00, 00);
+
+    daysLeft = parseInt((endDate-thisDate)/86400000);
+    hoursLeft = parseInt((endDate-thisDate)/3600000); 
+    
+    day = 365 - daysLeft;
+
+    ordinalSuffix = ['st', 'nd', 'rd'];
+    addSuffix = n => n + (ordinalSuffix[(n - 1) % 10] || 'th');
+    numberToOrdinal = n => `${n}`.match(/1\d$/) ? n + 'th' : addSuffix(n);
+    ord = numberToOrdinal(day)
+
+
+    hours = daysLeft*24;
+
+    startCount(hours);
+    }, 1000);
+}
+
+function startCount(hours){
+    document.getElementById("days").innerHTML="<span>Dawn of</span><p> The " + ord + " Day</p>";
+    document.getElementById("counter").innerHTML="- " + hours + " Hours Remain -";
+    countIt();
+}
+
+    </script>
+  </body>
+</html>
