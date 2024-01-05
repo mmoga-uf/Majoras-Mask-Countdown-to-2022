@@ -44,15 +44,15 @@ countIt();
 function countIt(){
 
     setTimeout(function(){
-    startDate = new Date("Jan 01 2021 00:00:00");
-    endDate = new Date("Jan 01 2022 00:00:00");
+    startDate = new Date("Jan 02 2024 00:00:00");
+    endDate = new Date("Jan 15 2024 00:00:00");
     thisDate  = new Date();
-    thisDate  = new Date(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate(), thisDate.getHours(), thisDate.getMinutes(), thisDate.getSeconds(), 00, 00);
+    thisDate  = new Date(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate(), thisDate.getHours(), thisDate.getMinutes(), thisDate.getSeconds(), 0, 0);
 
     daysLeft = parseInt((endDate-thisDate)/86400000);
     hoursLeft = parseInt((endDate-thisDate)/3600000); 
     
-    day = 365 - daysLeft;
+    day = 15 - daysLeft;
 
     ordinalSuffix = ['st', 'nd', 'rd'];
     addSuffix = n => n + (ordinalSuffix[(n - 1) % 10] || 'th');
